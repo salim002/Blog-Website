@@ -1,5 +1,6 @@
 import authModel from "../models/authModel.js";
 import bcryptjs from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 
 class AuthController 
@@ -22,7 +23,7 @@ class AuthController
                     });
                     const savedUser = await newUser.save();
                     if(savedUser){
-                        return res.status(200).json({message: "Registered successfully"});
+                        return res.status(201).json({message: "Registered successfully"});
                     }
                 }
             }
@@ -35,7 +36,29 @@ class AuthController
         }
     }
     static userLogin = async (req, res)=>{
-        res.send("user Login");
+        const {email, password} = req.body;
+        try{
+            if(email && password){
+                const isUser = await authModel.findOne({email: email});
+                if(isUser){
+                    if(await bcryptjs.compare(password, isUser.password)){
+                        const token = jwt.sign({userID: isUser._id}, "mdsalim", {expiresIn: "2d",});
+                        return res.status(200).json({message: "Logged in successfully", token, name: isUser.username});
+                    }
+                    else{
+                        return res.status(401).json({message: "Invalid credentials"})
+                    }
+                }
+                else{
+                    return res.status(404).json({message: "User not found"});
+                }
+            }
+            else{
+                res.status(400).json({message: "All fiels are required"});
+            }
+        } catch(error){
+            return res.status(400).json({message: error.message});
+        }
     }
 }
 
