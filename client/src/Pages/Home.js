@@ -23,9 +23,11 @@ const Home = () => {
         <main className="my-5">
             <div className="container shadow-lg">
                 <section className="text-center">
-                    <h2 className="mb-5 my-3">
-                        <strong>Latest Posts</strong>
-                    </h2>
+                    {blogs && blogs.length>0 && 
+                        <h2 className="mb-5 my-3">
+                            <strong>Latest Blogs</strong>
+                        </h2>
+                    }
                     <div className="row">
                         {blogs && blogs.length>0 ?
                          blogs.map((item)=>{
@@ -35,9 +37,10 @@ const Home = () => {
                                     className="bg-image hover-overlay ripple"
                                     data-mdb-ripple-color="light"
                                 >
-                                    <img src={`http://localhosst:9000/${item.thumbnail}`} 
+                                    <img src={`http://localhost:9000/${item.thumbnail}`} 
                                     alt=""
                                     className="img-fluid"
+                                    style={{width: "50%", height: "400px", margin: "auto"}}
                                     />
                                     <a href="#!">
                                         <div className="mask"
@@ -54,7 +57,7 @@ const Home = () => {
                             </div>
                             )
                          })
-                        : <h2>Loading..</h2> }
+                        : <h2>No Blogs Found</h2> }
                         <div className="col-lg-4 col-md-12 mb-4">
                         </div>
                     </div>
@@ -67,7 +70,7 @@ const Home = () => {
                 style={{backgroundColor: "rgba(0, 0, 0, 0.2"}}
             >
             &#169; 2023 Copyright :
-            <a href="https://mdbootstrap.com/" className="text-white mx-2">mdsalim</a>
+            <a href="/#" className="text-white mx-2">mdsalim</a>
             </div>
         </footer>
     </>

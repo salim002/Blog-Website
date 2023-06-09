@@ -16,9 +16,9 @@ const Header = () => {
   return (
     <>
         <nav className="navbar navbar-expand-lg navbar-light bg-primary">
-            <Link className="navbar-brand text-white mx-3" to="/">
+            {/* <Link className="navbar-brand text-white mx-3" to="/">
                 Salim's Blog App
-            </Link>
+            </Link> */}
             <button className="navbar-toggler"
                 type="button"   
                 data-toggle="collapse"
@@ -30,24 +30,26 @@ const Header = () => {
                 <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collpse navbar-collapse" id="navbarSupportedContent">
-                <ul className="navbar-nav mr-auto text-white">
-                    <li className="nav-item active">
-                        <Link className="nav-link text-white" to="/">
-                            Home
-                        </Link>
-                    </li>
-                    <li className="nav-item active">
-                        <Link className="nav-link text-white" to="/add-blog">
-                            Add Blog
-                        </Link>
-                    </li>
-                    <li className="nav-item active">
-                        <Link className="nav-link text-white" to="/add-category">
-                            Add Category
-                        </Link>
-                    </li>
-                </ul>
-                <div className="div-inline mx-auto my-2 my-lg-0">
+                {token &&
+                    <ul className="navbar-nav mr-auto text-white">
+                        <li className="nav-item active">
+                            <Link className="nav-link text-white" to="/">
+                                Home
+                            </Link>
+                        </li>
+                        <li className="nav-item active">
+                            <Link className="nav-link text-white" to="/add-blog">
+                                Add Blog
+                            </Link>
+                        </li>
+                        <li className="nav-item active">
+                            <Link className="nav-link text-white" to="/add-category">
+                                Add Category
+                            </Link>
+                        </li>
+                    </ul>
+                }
+                <div className="div-inline mx-auto my-2 my-lg-0" style={{width: "100%", display: "flex", justifyContent: "flex-end"}}>
                     {token && token !== null ?
                         <>
                             <button className="btn btn-primary">Welcome: {username}</button>

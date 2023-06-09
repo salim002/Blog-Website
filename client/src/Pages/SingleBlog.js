@@ -29,7 +29,11 @@ const SingleBlog = () => {
                 <div className="row">
                     <h1 className="my-3">{blog.title}</h1>
                     {/* <p className="my-3">Published Date: </p> */}
-                    <img src={`http://localhost:9000/${blog.thumbnail}`} alt="" className="img img-responsive img-rounded my-3" />
+                    <img src={`http://localhost:9000/${blog.thumbnail}`} 
+                      alt="" 
+                      className="img img-responsive img-rounded my-3" 
+                      style={{width: "50%", height: "auto", margin: "auto"}}
+                    />
                     <p className="my-3">{blog.description}</p>
                 </div>
             </div>
