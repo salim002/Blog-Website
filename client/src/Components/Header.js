@@ -49,7 +49,7 @@ const Header = () => {
                         </li>
                     </ul>
                 }
-                <div className="div-inline mx-auto my-2 my-lg-0" style={{width: "100%", display: "flex", justifyContent: "flex-end"}}>
+                <div className="div-inline mx-auto my-2 my-lg-0" style={{width: "70%", display: "flex", justifyContent: "flex-end"}}>
                     {token && token !== null ?
                         <>
                             <button className="btn btn-primary">Welcome: {username}</button>
