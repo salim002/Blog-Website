@@ -1,8 +1,8 @@
 import express from "express";
 const router = express.Router();
 import AuthController from '../controllers/authController.js';
-import BlogController from '../controllers/BlogController.js';
-import CategoryController from '../controllers/CategoryController.js';
+import BlogController from '../controllers/blogController.js';
+import CategoryController from '../controllers/categoryController.js';
 import checkIsUserAuthenticated from '../middlewares/authMiddleware.js';
 
 import multer from "multer";
